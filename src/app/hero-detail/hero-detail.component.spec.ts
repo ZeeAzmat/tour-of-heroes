@@ -1,5 +1,8 @@
+import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
 import { HeroDetailComponent } from './hero-detail.component';
 
 describe('HeroDetailComponent', () => {
@@ -8,7 +11,13 @@ describe('HeroDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeroDetailComponent ]
+      declarations: [ HeroDetailComponent ],
+      imports: [
+        FormsModule,
+        RouterTestingModule,
+        HttpClientModule
+      ],
+      providers: []
     })
     .compileComponents();
   }));
@@ -20,6 +29,7 @@ describe('HeroDetailComponent', () => {
   });
 
   it('should create', () => {
+    TestBed.createComponent(HeroDetailComponent);
     expect(component).toBeTruthy();
   });
 });

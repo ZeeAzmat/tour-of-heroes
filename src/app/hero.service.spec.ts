@@ -1,12 +1,24 @@
 import { TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HeroService } from './hero.service';
 
 describe('HeroService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let service: HeroService;
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [ HeroService ],
+      imports: [ HttpClientTestingModule ],
+    })
+    .compileComponents();
+
+    service = TestBed.get(HeroService);
+  });
+
+  test('should exist', () => {
+    expect(service).toBeDefined();
+  });
 
   it('should be created', () => {
-    const service: HeroService = TestBed.get(HeroService);
     expect(service).toBeTruthy();
   });
 });
